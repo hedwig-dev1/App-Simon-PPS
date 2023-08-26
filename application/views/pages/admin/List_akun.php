@@ -8,13 +8,13 @@
 			</div>			
 		</div>
 	</div>
-	
 	<div class="row">
 		<div class="col-sm-12">
 			<div class="card">
 				<div class="card-header">
+					<?php $this->load->view('partials/alerts');?>
 					<div class="row justify-content-between">
-						<h5>List Akun</h5>
+						<h5>List User</h5>
 					</div>
 				</div>
 				<div class="card-body">
@@ -33,23 +33,23 @@
 							</thead>
                             <tbody>
                             <?php $no = 1; 
-                            foreach ($pengguna as $data) { ?>
+                            foreach ($data as $d) { ?>
                                 <tr>
                                     <td><?= $no++ ?></td>
-                                    <td><?= $data->nama_satuan_kerja ?></td>
-                                    <td><?= $data->username ?></td>
-                                    <td><?= $data->level_akses ?></td>
-                                    <td><?= $data->terdaftar ?></td>
+                                    <td><?= $d->nama_satker ?></td>
+                                    <td><?= $d->user ?></td>
+                                    <td><?= $d->level ?></td>
+                                    <td><?= $d->terdaftar ?></td>
 									<td>
-										<?php if ($data->is_activate == 1) { ?>
+										<?php if ($d->is_activate == 1) { ?>
 											<a href="<?= base_url('aktivasi') ?>" class="span badge rounded-pill pill-badge-primary" disabled="disabled">Done</a>
 										<?php } ?>
-										<?php if ($data->is_activate == 0) { ?>
-										<a href="<?= base_url('aktivasi/' . $data->id_pengguna) ?>" class="span badge rounded-pill pill-badge-danger">Aktivasi</a>
+										<?php if ($d->is_activate == 0) { ?>
+										<a href="<?= base_url('aktivasi/' . $d->id_pengguna) ?>" class="span badge rounded-pill pill-badge-danger">Aktivasi</a>
 										<?php } ?>                               
 									</td>
 									<td>
-										<a href="<?= base_url('delete/' . $data->id_pengguna) ?>" class="span badge rounded-pill pill-badge-danger">Hapus</a>
+										<a href="<?= base_url('delete/' . $d->id_pengguna) ?>" class="span badge rounded-pill pill-badge-danger">Hapus</a>
 									</td>
 									</tr>
                              <?php } ?>    

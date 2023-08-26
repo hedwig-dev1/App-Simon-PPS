@@ -11,29 +11,29 @@
 		<div class="col-sm-8">
 			<div class="card">
 				<div class="card-body">
-					<form method="POST" action="<?= base_url('set_akun'); ?>" class="needs-validation">
+					<form method="POST" action="<?= base_url($action); ?>" class="needs-validation">
 						<div class="row g-3">
 							<div class="col-md-6">
 								<label class="form-label text-dark" for="">Nama Satuan Kerja</label>
-								<input class="form-control" name="nama_satuan_kerja" id="name_satuan_kerja" type="text" required="">
-								<div class="form-text text-danger"><?= form_error('nama_satuan_kerja'); ?></div>
+								<input class="form-control" name="nama_satker" id="name_satker" type="text" required="">
+								<div class="form-text text-danger"><?= form_error('nama_satker'); ?></div>
 
 							</div>
 							<div class="col-md-6">
 								<label class="form-label text-dark" for="">Username</label>
-								<input class="form-control" name="username" id="username" type="text" required="">
-								<div class="form-text text-danger"><?= form_error('username'); ?></div>
+								<input class="form-control" name="user" id="user" type="text" required="">
+								<div class="form-text text-danger"><?= form_error('user'); ?></div>
 
 							</div>
 							<div class="col-md-6">
 								<label class="form-label text-dark" for="">Password</label>
-								<input class="form-control" name="password" id="password" type="text" required="">
-								<div class="form-text text-danger"><?= form_error('password'); ?></div>
+								<input class="form-control" name="pass" id="pass" type="text" required="">
+								<div class="form-text text-danger"><?= form_error('pass'); ?></div>
 
 							</div>
 							<div class="col-md-6 mb-3">
 								<label class="form-label text-dark" for="">Level Akses</label>
-								<select class="form-select digits" name="level_akses" id="level_akses">
+								<select class="form-select digits" name="level" id="level">
 									<option default>-- Pilih --</option>
 									<option value="admin">Admin</option>
 									<option value="guest">Guest</option>

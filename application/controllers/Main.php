@@ -8,9 +8,7 @@ class Main extends CI_Controller {
     
     public function __construct()
     {
-        parent::__construct();
-        $this->load->library('session');
-        
+        parent::__construct();        
     }
     
     function index()
@@ -20,6 +18,15 @@ class Main extends CI_Controller {
             'pages' => 'pages/dashboard'
         );
         $this->load->view('main', $data);   
+    }
+
+    function error()
+    {
+        $data = array(
+            'title' => '404 not found',
+            'pages' => 'pages/404'
+        );
+        $this->load->view('pages/404', $data);
     }
 
 

@@ -50,21 +50,24 @@
         <div class="row">
           <div class="col-12">              
             <div class="login-card">
-              <form method="POST" action="<?= base_url('pro_login'); ?>" enctype="multipart/form-data" class="theme-form login-form user">
+              <form method="POST" action="<?= base_url($action); ?>" enctype="multipart/form-data" class="theme-form login-form user">
                 <h4 class="text-center">Login</h4>
                 <h6 class="text-center">Welcome back! Log in to your account.</h6>
+                <?php $this->load->view('partials/alerts');?>
                 <div class="form-group">
                   <label>Username</label>
                   <div class="input-group"><span class="input-group-text"><i class="icon-user"></i></span>
-                    <input class="form-control text-dark" type="text" id="username" name="username" required>
+                    <input class="form-control text-dark" type="text" id="user" name="user">
                   </div>
+                  <div class="txt-danger"><?= form_error('user'); ?></div>
                 </div>
                 <div class="form-group">
                   <label>Password</label>
                   <div class="input-group"><span class="input-group-text"><i class="icon-lock"></i></span>
-                    <input class="form-control text-dark" type="password" id="password" name="password" required>
-                    <div class="show-hide"><span class="show"></span></div>
-                  </div>
+                  <input class="form-control text-dark" type="password" id="pass" name="pass">
+                  <div class="show-hide"><span class="show"></span></div>
+                </div>
+                <div class="txt-danger"><?= form_error('pass'); ?></div>
                 </div>
                 <div class="form-group">
                   <button class="btn btn-primary btn-block" type="submit">Log in</button>

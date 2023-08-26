@@ -57,7 +57,6 @@
 
 <body>
 
-
 	<!-- Loader starts-->
 	<div class="loader-wrapper">
 		<div class="theme-loader">
@@ -75,5 +74,6 @@
             <!-- sidebar -->
         <?php $this->load->view('partials/sidebar');?>
         <div class="page-body">
+		<?php var_dump($this->session->userdata());?>
 	<!-- footer -->
 		

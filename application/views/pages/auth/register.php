@@ -50,29 +50,33 @@
         <div class="row m-0">
           <div class="col-12 p-0">    
             <div class="login-card">
-              <form class="theme-form login-form" method="POST" action="<?= base_url('pro_register') ?>" >
+              <small class="txt-danger"><?= validation_errors(); ?></small>
+              <form class="theme-form login-form" method="POST" action="<?= base_url($action) ?>" >
                 <h4>Buat Akunmu</h4>
                 <h6>Masukkan detail pribadi Anda untuk membuat akun</h6>
                 <div class="form-group">
                   <label>Nama Satuan Kerja</label>
                   <div class="small-group">
                     <div class="input-group"><span class="input-group-text"><i class="icon-user"></i></span>
-                      <input class="form-control" type="text" name="nama" required>
+                      <input class="form-control" type="text" name="nama_satker" required>
                     </div>
                   </div>
+                  <div class="txt-danger"><?= form_error('nama_satker'); ?></div>
                 </div>
                 <div class="form-group">
                   <label>Username</label>
                   <div class="input-group"><span class="input-group-text"><i class="icon-user"></i></span>
-                    <input class="form-control" type="text" name="username" required>
+                    <input class="form-control" type="text" name="user" required>
                   </div>
+                  <div class="txt-danger"><?= form_error('user'); ?></div>
                 </div>
                 <div class="form-group">
                   <label>Password</label>
                   <div class="input-group"><span class="input-group-text"><i class="icon-lock"></i></span>
-                    <input class="form-control" type="text" name="password" required>
+                    <input class="form-control" type="text" name="pass" required>
                     <div class="show-hide"><span class="show"></span></div>
                   </div>
+                  <div class="txt-danger"><?= form_error('pass'); ?></div>
                 </div>
                 <div class="form-group">
                   <div class="checkbox">
