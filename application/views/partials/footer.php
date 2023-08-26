@@ -27,48 +27,30 @@
 	<!-- Bootstrap js-->
 	<script src="<?= base_url('public/')?>js/bootstrap/popper.min.js"></script>
 	<script src="<?= base_url('public/')?>js/bootstrap/bootstrap.min.js"></script>
-	<!-- Plugins JS start-->
-	<script src="<?= base_url('public/')?>js/chart/chartist/chartist.js"></script>
-	<script src="<?= base_url('public/')?>js/chart/chartist/chartist-plugin-tooltip.js"></script>
-	<script src="<?= base_url('public/')?>js/chart/knob/knob.min.js"></script>
-	<script src="<?= base_url('public/')?>js/chart/knob/knob-chart.js"></script>
-	<script src="<?= base_url('public/')?>js/chart/apex-chart/apex-chart.js"></script>
-	<script src="<?= base_url('public/')?>js/chart/apex-chart/stock-prices.js"></script>
-	<script src="<?= base_url('public/')?>js/prism/prism.min.js"></script>
-	<script src="<?= base_url('public/')?>js/clipboard/clipboard.min.js"></script>
-	<script src="<?= base_url('public/')?>js/counter/jquery.waypoints.min.js"></script>
-	<script src="<?= base_url('public/')?>js/counter/jquery.counterup.min.js"></script>
-	<script src="<?= base_url('public/')?>js/counter/counter-custom.js"></script>
-	<script src="<?= base_url('public/')?>js/custom-card/custom-card.js"></script>
-	<script src="<?= base_url('public/')?>js/notify/bootstrap-notify.min.js"></script>
-	<script src="<?= base_url('public/')?>js/vector-map/jquery-jvectormap-2.0.2.min.js"></script>
-	<script src="<?= base_url('public/')?>js/vector-map/map/jquery-jvectormap-world-mill-en.js"></script>
-	<script src="<?= base_url('public/')?>js/vector-map/map/jquery-jvectormap-us-aea-en.js"></script>
-	<script src="<?= base_url('public/')?>js/vector-map/map/jquery-jvectormap-uk-mill-en.js"></script>
-	<script src="<?= base_url('public/')?>js/vector-map/map/jquery-jvectormap-au-mill.js"></script>
-	<script src="<?= base_url('public/')?>js/vector-map/map/jquery-jvectormap-chicago-mill-en.js"></script>
-	<script src="<?= base_url('public/')?>js/vector-map/map/jquery-jvectormap-in-mill.js"></script>
-	<script src="<?= base_url('public/')?>js/vector-map/map/jquery-jvectormap-asia-mill.js"></script>
-	<script src="<?= base_url('public/')?>js/dashboard/default.js"></script>
-	<script src="<?= base_url('public/')?>js/notify/index.js"></script>
-	<script src="<?= base_url('public/')?>js/datepicker/date-picker/datepicker.js"></script>
-	<script src="<?= base_url('public/')?>js/datepicker/date-picker/datepicker.en.js"></script>
-	<script src="<?= base_url('public/')?>js/datepicker/date-picker/datepicker.custom.js"></script>
-	<!-- Plugins JS Ends-->
 
+	<?php if ($this->uri->segment(1) == 'daftar_permohonan' || $this->uri->segment(2) == 'daftar_progress') { ?>
 	<!-- table start -->
 	<script src="<?= base_url('public/')?>js/datatable/datatables/jquery.dataTables.min.js"></script>
 	<script src="<?= base_url('public/')?>js/datatable/datatables/datatable.custom.js"></script>
 	<script src="<?= base_url('public/')?>js/tooltip-init.js"></script>
-	<!-- table end -->
-	<!-- widget -->
 	<script src="<?= base_url('public/')?>js/chart-widget.js"></script>
-	<!-- widget -->
+	<!-- table end -->
+	<?php } ?>
+
 	<!-- Theme js-->
 	<script src="<?= base_url('public/')?>js/script.js"></script>
 	<script src="<?= base_url('public/')?>js/theme-customizer/customizer.js"></script>
 	<!-- login js-->
 	<!-- Plugin used-->
+	<script src="<?= base_url('public/')?>js/extra/jquery.mask.js"></script>
+	<script type="text/javascript">
+            $(document).ready(function(){
+
+                // Format mata uang.
+                $( '.uang' ).mask('000.000.000.000.000', {reverse: true});
+
+            })
+        </script>
 </body>
 
 </html>

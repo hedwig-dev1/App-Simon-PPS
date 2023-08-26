@@ -34,13 +34,6 @@
 	<link rel="stylesheet" type="text/css" href="<?= base_url('public/')?>css/flag-icon.css">
 	<!-- Feather icon-->
 	<link rel="stylesheet" type="text/css" href="<?= base_url('public/')?>css/feather-icon.css">
-	<!-- Plugins css start-->
-	<link rel="stylesheet" type="text/css" href="<?= base_url('public/')?>css/animate.css">
-	<link rel="stylesheet" type="text/css" href="<?= base_url('public/')?>css/chartist.css">
-	<link rel="stylesheet" type="text/css" href="<?= base_url('public/')?>assmain-navets/css/date-picker.css">
-	<link rel="stylesheet" type="text/css" href="<?= base_url('public/')?>css/prism.css">
-	<link rel="stylesheet" type="text/css" href="<?= base_url('public/')?>css/vector-map.css">
-	<!-- Plugins css Ends-->
 	<!-- Bootstrap css-->
 	<link rel="stylesheet" type="text/css" href="<?= base_url('public/')?>css/bootstrap.css">
 	<!-- App css-->
@@ -50,9 +43,10 @@
 	<link rel="stylesheet" type="text/css" href="<?= base_url('public/')?>css/responsive.css">
 
 	<!-- table start -->
-	<link rel="stylesheet" type="text/css" href="<?= base_url('public/')?>css/datatables.css">
+	<?php if ($this->uri->segment(1) == 'daftar_permohonan' || $this->uri->segment(2) == 'daftar_progress') { ?>
+		<link rel="stylesheet" type="text/css" href="<?= base_url('public/')?>css/datatables.css">
+	<?php } ?>
 	<!-- table end -->
-
 </head>
 
 <body>

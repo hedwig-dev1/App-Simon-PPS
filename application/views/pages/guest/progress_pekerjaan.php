@@ -20,31 +20,31 @@
 							</div>
 							<div class="col-md-4">
 								<label class="form-label f-w-700 txt-dark" for="">Rencana Progress <span class="txt-danger">*%</span></label>
-								<input class="form-control" name="rencana_progress" id="rencana_progress" type="text">
+								<input class="form-control" name="rencana_progress" id="rencana_progress" type="text" value="<?= set_value('rencana_progress'); ?>">
 							</div>
 							<div class="col-md-4 mb-4">
 								<label class="form-label f-w-700 txt-dark" for="">Realisasi Progress <span class="txt-danger">*%</span></label>
-								<input class="form-control" name="realisasi_progress" id="realisasi_progress" type="text">
+								<input class="form-control" name="realisasi_progress" id="realisasi_progress" type="text" value="<?= set_value('realisasi_progress'); ?>">
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-4">
 								<label class="form-label f-w-700 txt-dark" for="">Deviasi <span class="txt-danger">*%</span></label>
-								<input class="form-control" name="deviasi" id="deviasi" type="text">
+								<input class="form-control" name="deviasi" id="deviasi" type="text" value="<?= set_value('deviasi'); ?>">
 							</div>
 							<div class="col-md-4">
 								<label class="form-label f-w-700 txt-dark" for="">Realisasi Keuangan</label>
-								<input class="form-control" name="realisasi_keuangan" id="realisasi_keuangan" type="text" placeholder="Rp.10.000.000">
+								<input class="form-control uang" name="realisasi_keuangan" id="realisasi_keuangan" type="text" value="<?= set_value('realisasi_keuangan'); ?>">
 							</div>
 							<div class="col-md-4 mb-4">
 								<label class="form-label f-w-700 txt-dark" for="">Laporan Bulanan</label>
-								<input class="form-control" name="laporan_bulanan" id="laporan_bulanan" type="text">
+								<input class="form-control" name="laporan_bulanan" id="laporan_bulanan" type="text" value="<?= set_value('laporan_bulanan'); ?>">
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-4">
 								<label class="form-label f-w-700 txt-dark" for="">Waktu</label>
-								<input class="form-control" name="waktu" id="waktu" type="datetime-local">
+								<input class="form-control" name="waktu" id="waktu" type="datetime-local" value="<?= set_value('local'); ?>">
 							</div>
 							<div class="col-md-8 mb-4">
 								<label class="form-label f-w-700 txt-dark" for="">Item Pekerjaan <span class="txt-danger">*foto</span></label>

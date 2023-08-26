@@ -15,41 +15,41 @@
 						<div class="row g-3">
 							<div class="col-md-4">
 								<label class="form-label f-w-700 txt-dark" for="">Nama Pekerjaan</label>
-								<input class="form-control" name="nama_pekerjaan" id="nama_pekerjaan" type="text">
+								<input class="form-control" name="nama_pekerjaan" id="nama_pekerjaan" type="text" value="<?= set_value('nama_pekerjaan')?>">
 								<div class="txt-danger"><?= form_error('nama_pekerjaan'); ?></div>
 							</div>
 							<div class="col-md-4">
 								<label class="form-label f-w-700 txt-dark" for="">Sumber Pembiayaan</label>
-								<input class="form-control" name="sumber_pembiayaan" id="sumber_pembiayaan" type="text">
+								<input class="form-control" name="sumber_pembiayaan" id="sumber_pembiayaan" type="text" value="<?= set_value('sumber_pembiayaan'); ?>">
 							    <div class="txt-danger"><?= form_error('sumber_pembiayaan'); ?></div>
 							</div>
 							<div class="col-md-4 mb-4">
-								<label class="form-label f-w-700 txt-dark" for="paguAnggaranInput">Pagu Anggaran</label>
-								<input class="form-control rupiah-input" name="pagu_anggaran" id="paguAnggaranInput" type="text">
+								<label class="form-label f-w-700 txt-dark" for="">Pagu Anggaran</label>
+								<input class="form-control uang" name="pagu_anggaran" type="text" value="<?= set_value('pagu_anggaran'); ?>">
 							    <div class="txt-danger"><?= form_error('pagu_anggaran'); ?></div>
 							</div>
 						</div>
 						<div class="row g-3">
 							<div class="col-md-4">
-								<label class="form-label f-w-700 txt-dark" for="nilaiKontrakInput">Nilai Kontrak</label>
-								<input class="form-control rupiah-input" name="nilai_kontrak" id="nilaiKontrakInput" type="text">
+								<label class="form-label f-w-700 txt-dark" for="">Nilai Kontrak</label>
+								<input class="form-control uang" name="nilai_kontrak" type="text" value="<?= set_value('nilai_kontrak'); ?>">
 								<div class="txt-danger"><?= form_error('nilai_kontrak'); ?></div>
 							</div>
 							<div class="col-md-4">
 								<label class="form-label f-w-700 txt-dark" for="">Jangka Waktu Pelaksanaan</label>
-								<input class="form-control" name="jangka_waktu_pelaksanaan" id="jangka_waktu_pelaksanaan" type="text">
+								<input class="form-control" name="jangka_waktu_pelaksanaan" id="jangka_waktu_pelaksanaan" type="text" value="<?= set_value('jangka_waktu_pelaksanaan'); ?>">
 								<div class="txt-danger"><?= form_error('jangka_waktu_pelaksanaan'); ?></div>
 							</div>
 							<div class="col-md-4">
 								<label class="form-label f-w-700 txt-dark" for="">Lokasi Pekerjaan</label>
-								<input class="form-control" name="lokasi_pekerjaan" id="lokasi_pekerjaan" type="text">
+								<input class="form-control" name="lokasi_pekerjaan" id="lokasi_pekerjaan" type="text" value="<?= set_value('lokasi_pekerjaan'); ?>">
 								<div class="txt-danger"><?= form_error('lokasi_pekerjaan'); ?></div>
 							</div>
 						</div>
 						<div class="row g-3">
 							<div class="col-md-4">
 								<label class="form-label f-w-700 txt-dark" for="">Tahapan Yang Sedang Berjalan</label>
-								<input class="form-control" name="tahapan_berjalan" id="tahapan_berjalan" type="text">
+								<input class="form-control" name="tahapan_berjalan" id="tahapan_berjalan" type="text" value="<?= set_value('tahapan_berjalan'); ?>">
 								<div class="txt-danger"><?= form_error('tahapan_berjalan'); ?></div>
 							</div>
 							<div class="col-md-4">
@@ -71,7 +71,7 @@
 							</div>
 							<div class="col-md-4 mb-4">
 								<label class="form-label f-w-700 txt-dark" for="">Potensi Pengaruh Keberhasilan Pekerjaan</label>
-                            	<textarea class="form-control" name="potensi_pengaruh_keberhasilan" id="potensi_pengaruh_keberhasilan" rows="3"></textarea>
+                            	<textarea class="form-control" name="potensi_pengaruh_keberhasilan" id="potensi_pengaruh_keberhasilan" rows="3"><?= set_value('potensi_pengaruh_keberhasilan'); ?></textarea>
 								<div class="txt-danger"><?= form_error('potensi_pengaruh_keberhasilan'); ?></div>
 							</div>
 						</div>
@@ -82,33 +82,3 @@
 		</div>
 	</div>
 </div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Mencari semua input dengan class "rupiah-input"
-        let rupiahInputs = document.querySelectorAll('.rupiah-input');
-
-        // Menggunakan loop untuk mengatur event listener pada masing-masing input
-        rupiahInputs.forEach(function (input) {
-            input.addEventListener('blur', formatRupiah);
-        });
-
-        function formatRupiah(event) {
-            let input = event.target;
-            let value = input.value;
-
-            // Menghapus karakter non-digit (seperti titik dan koma) dari input
-            value = value.replace(/[^\d]/g, '');
-
-            // Mengubah angka menjadi format mata uang dengan titik sebagai separator ribuan
-            // dan koma sebagai separator desimal
-            let formattedValue = Number(value).toLocaleString('id-ID', {
-                style: 'currency',
-                currency: 'IDR'
-            });
-
-            // Mengubah nilai input menjadi format mata uang yang diinginkan
-            input.value = formattedValue;
-        }
-    });
-</script>

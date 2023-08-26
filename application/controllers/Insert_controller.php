@@ -56,15 +56,16 @@ class Insert_controller extends CI_Controller {
             $s_permohonanPE = $_FILES['s_permohonanPE']['name'];
             $timtah_pelakPE = $_FILES['timtah_pelakPE']['name'];
             $skp_straPE = $_FILES['skp_straPE']['name'];
-            
+            $nilaiPagu = str_replace('.','',$this->input->post('pagu_anggaran'));
+            $nilaiKontrak = str_replace('.','',$this->input->post('nilai_kontrak'));
             // tb pemohon
             $data = array(
                 'id_pemohonPE' => $id_pemohonPE,
                 'dokumen_idPE' => $dokumen_idPE,
                 'nama_pkjPE' => $this->input->post('nama_pekerjaan'),
                 'sumber_pbyPE' => $this->input->post('sumber_pembiayaan'),
-                'pagu_aggPE' => $this->input->post('pagu_anggaran'),
-                'nil_kontrakPE' => $this->input->post('nilai_kontrak'),
+                'pagu_aggPE' => $nilaiPagu,
+                'nil_kontrakPE' => $nilaiKontrak,
                 'jw_pelaksanaanPE' => $this->input->post('jangka_waktu_pelaksanaan'),
                 'lokasi_pkjPE' => $this->input->post('lokasi_pekerjaan'),
                 't_berjalanPE' => $this->input->post('tahapan_berjalan'),
@@ -409,17 +410,13 @@ class Insert_controller extends CI_Controller {
                     'min_length' => '%s terlalu pendek !',
                     'max_length' => '%s terlalu panjang !',
                 ));
-                $this->form_validation->set_rules('timtah_pelakPE', 'Timeline Tahapan Pelaksanaan', 'trim|required',array('required' => '%s wajib di isi !'));
-                $this->form_validation->set_rules('skp_straPE', 'Surat Keputusan Proyek Strategis Daerah', 'trim|required',array('required' => '%s wajib di isi !'));
-                $this->form_validation->set_rules('s_permohonanPE', 'Surat Permohonan', 'trim|required',array('required' => '%s wajib di isi !'));
                 $this->form_validation->set_rules('potensi_pengaruh_keberhasilan', 'Potensi Pengaruh Keberhasilan', 'trim|required|min_length[5]|max_length[50]',array(
                     'required' => '%s wajib di isi !',
                     'min_length' => '%s terlalu pendek !',
                     'max_length' => '%s terlalu panjang !',
                 ));
                 
-                break;
-            
+                break;            
             default:
                 # code...
                 break;

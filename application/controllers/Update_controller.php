@@ -40,42 +40,50 @@ class Update_controller extends CI_Controller {
      */
     function update_process_progress($id_progPR) 
     {
-        $nama_file_foto = 'default' . '_' . date('Y-m-d');
+        $this->_rules('progress');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->sendProgress();
+        } else {
+            $nama_file_foto = 'default' . '_' . date('Y-m-d');
     
-        $it_pkjPR = $_FILES['it_pkjPR']['tmp_name']; // upload foto
-        $pemohon_idPR = $this->input->post('pemohon_idPR');
-    
-        $data = array(
-            'rcn_progPR'    =>  $this->input->post('rencana_progress'),
-            'rl_progPR'     =>  $this->input->post('realisasi_progress'),
-            'deviasiPR'     =>  $this->input->post('deviasi'),
-            'rl_keuanPR'    =>  $this->input->post('realisasi_keuangan'),
-            'lp_bulanPR'    =>  $this->input->post('laporan_bulanan'),
-            'waktuPR'       =>  $this->input->post('waktu')
-        );
-    
-        // upload gambar / foto
-        $config = array(
-            'allowed_types' => 'jpg|jpeg|png|gif',
-            'max_size'      => 10000,
-            'overwrite'     => TRUE,
-            'file_name'     => $nama_file_foto,
-            'upload_path'   => './public/lampiran/foto',
-            'encrypt_name'  => FALSE,
-        );
-    
-        $this->load->library('upload', $config);
-    
-        $data['it_pkjPR'] = $nama_file_foto;
-    
-        if ($this->upload->do_upload('it_pkjPR')) {
-            $it_pkjPR_data = $this->upload->data();
-            $data['it_pkjPR'] = $nama_file_foto . $it_pkjPR_data['file_ext'];
+            $it_pkjPR = $_FILES['it_pkjPR']['tmp_name']; // upload foto
+            $pemohon_idPR = $this->input->post('pemohon_idPR');
+        
+            $data = array(
+                'rcn_progPR'    =>  $this->input->post('rencana_progress'),
+                'rl_progPR'     =>  $this->input->post('realisasi_progress'),
+                'deviasiPR'     =>  $this->input->post('deviasi'),
+                'rl_keuanPR'    =>  $this->input->post('realisasi_keuangan'),
+                'lp_bulanPR'    =>  $this->input->post('laporan_bulanan'),
+                'waktuPR'       =>  $this->input->post('waktu')
+            );
+        
+            // upload gambar / foto
+            $config = array(
+                'allowed_types' => 'jpg|jpeg|png|gif',
+                'max_size'      => 10000,
+                'overwrite'     => TRUE,
+                'file_name'     => $nama_file_foto,
+                'upload_path'   => './public/lampiran/foto',
+                'encrypt_name'  => FALSE,
+            );
+        
+            $this->load->library('upload', $config);
+        
+            $data['it_pkjPR'] = $nama_file_foto;
+        
+            if ($this->upload->do_upload('it_pkjPR')) {
+                $it_pkjPR_data = $this->upload->data();
+                $data['it_pkjPR'] = $nama_file_foto . $it_pkjPR_data['file_ext'];
+            }
+            
+            $this->ins->update_progress($data, $id_progPR); // Gunakan update_progress dari model Insert_model
+            $this->session->set_flashdata('success', '<strong>Data progress telah berhasil dikirimkan!</strong>');
+            redirect('daftar_progress');
         }
         
-        $this->ins->update_progress($data, $id_progPR); // Gunakan update_progress dari model Insert_model
-        $this->session->set_flashdata('success', '<strong>Data progress telah berhasil dikirimkan!</strong>');
-        redirect('daftar_progress');
+       
     }
     
      
@@ -303,6 +311,44 @@ class Update_controller extends CI_Controller {
             $this->session->set_flashdata('success', 'Akun berhasil dihapus!');
             redirect('list_user');
         }
+    }
+
+    function _rules($validasi) {
+        switch ($validasi) {
+            case 'progress':
+                $this->form_validation->set_rules('rencana_progress', 'Rencana Progress', 'trim|required|min_length[3]|max_length[20]',array(
+                    'required' => '%s wajib di isi !',
+                    'min_length' => '%s terlalu pendek !',
+                    'max_length' => '%s terlalu panjang !',
+                ));
+                $this->form_validation->set_rules('realisasi_progress', 'Realisasi Progress', 'trim|required|min_length[3]|max_length[20]',array(
+                    'required' => '%s wajib di isi !',
+                    'min_length' => '%s terlalu pendek !',
+                    'max_length' => '%s terlalu panjang !',
+                ));
+                $this->form_validation->set_rules('deviasi', 'Deviasi', 'trim|required|min_length[3]|max_length[20]',array(
+                    'required' => '%s wajib di isi !',
+                    'min_length' => '%s terlalu pendek !',
+                    'max_length' => '%s terlalu panjang !',
+                ));
+                $this->form_validation->set_rules('realisasi_keuangan', 'Realisasi Keuangan', 'trim|required|min_length[5]|max_length[50]',array(
+                    'required' => '%s wajib di isi !',
+                    'min_length' => '%s terlalu pendek !',
+                    'max_length' => '%s terlalu panjang !',
+                ));
+                $this->form_validation->set_rules('laporan_bulanan', 'Laporan Bulanan', 'trim|required|min_length[5]|max_length[50]',array(
+                    'required' => '%s wajib di isi !',
+                    'min_length' => '%s terlalu pendek !',
+                    'max_length' => '%s terlalu panjang !',
+                ));
+                
+                break;
+            
+            default:
+                # code...
+                break;
+        }
+        
     }
 }
 
