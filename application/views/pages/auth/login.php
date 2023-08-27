@@ -51,6 +51,7 @@
           <div class="col-12">              
             <div class="login-card">
               <form method="POST" action="<?= base_url($action); ?>" enctype="multipart/form-data" class="theme-form login-form user">
+               <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
                 <h4 class="text-center">Login</h4>
                 <h6 class="text-center">Welcome back! Log in to your account.</h6>
                 <?php $this->load->view('partials/alerts');?>
