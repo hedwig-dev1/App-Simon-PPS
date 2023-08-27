@@ -42,7 +42,7 @@
 	<script src="<?= base_url('public/')?>js/theme-customizer/customizer.js"></script>
 	<!-- login js-->
 	<!-- Plugin used-->
-	<script src="<?= base_url('public/')?>js/extra/jquery.mask.js"></script>
+	<script src="<?= base_url('public/')?>js/extra-js/jquery.mask.js"></script>
 	<script type="text/javascript">
             $(document).ready(function(){
 
