@@ -84,7 +84,6 @@ class Insert_controller extends CI_Controller {
                 'id_dokumenDO' => $dokumen_idPE,
                 'pkj_namaDO' => $this->input->post('nama_pekerjaan')
             );
-
             $config = array(
                 'allowed_types' => 'pdf|docx|doc|odt',
                 'max_size'      => 10000,
@@ -208,6 +207,8 @@ class Insert_controller extends CI_Controller {
 
         $user = strtolower($this->input->post('user', TRUE));
         $pass = $this->input->post('pass', TRUE);
+        $csrf = $this->security->get_csrf_hash();
+        
         
         $validasi = $this->view->login($user, $pass);
      
@@ -221,7 +222,8 @@ class Insert_controller extends CI_Controller {
                         'user' => $data['user'],
                         'pass' => $data['pass'],
                         'level' => 'admin',
-                        'id_level' => '1'
+                        'id_level' => '1',
+                        'csrf'  => $csrf
                     ));
                     redirect('Main');
                     break;
@@ -233,7 +235,8 @@ class Insert_controller extends CI_Controller {
                         'user' => $data['user'],
                         'pass' => $data['pass'],
                         'level' => 'seksi-pps',
-                        'id_level' => '2'
+                        'id_level' => '2',
+                        'csrf'  => $csrf
                     ));
                     redirect('Main');
                     break;
@@ -246,7 +249,8 @@ class Insert_controller extends CI_Controller {
                             'user' => $data['user'],
                             'pass' => $data['pass'],
                             'level' => 'guest',
-                            'id_level' => '3'
+                            'id_level' => '3',
+                            'csrf'  => $csrf
                         ));
                         redirect('Main');
                     }else{

@@ -28,7 +28,7 @@
 	<script src="<?= base_url('public/')?>js/bootstrap/popper.min.js"></script>
 	<script src="<?= base_url('public/')?>js/bootstrap/bootstrap.min.js"></script>
 
-	<?php if ($this->uri->segment(1) == 'daftar_permohonan' || $this->uri->segment(2) == 'daftar_progress') { ?>
+	<?php if ($this->uri->segment(1) == 'daftar_permohonan' || $this->uri->segment(1) == 'daftar_progress'|| $this->uri->segment(1) == 'pesan'|| $this->uri->segment(1) == 'list_user') { ?>
 	<!-- table start -->
 	<script src="<?= base_url('public/')?>js/datatable/datatables/jquery.dataTables.min.js"></script>
 	<script src="<?= base_url('public/')?>js/datatable/datatables/datatable.custom.js"></script>
