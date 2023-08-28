@@ -31,7 +31,6 @@
 									<th>No</th>
 									<th>Nama Proyek</th>
 									<th>Status</th>
-									<th>Pesan</th>
 									<th>OPSI</th>
 								</tr>
 							</thead>
@@ -50,7 +49,6 @@
 										<?php } else { ?>
 											<td><span class="btn btn-pill btn-secondary btn-air-secondary btn-xs">Belum diperiksa</span></td>
 										 <?php } ?>
-										 <td class="text-wrap"><?= $d->ket_dokDO ?></td>
 										 <td>
 										 <a href="#" class="span badge rounded-pill pill-badge-warning" type="button"
 											data-bs-toggle="modal" data-bs-target="#modal-<?= $d->id_dokumenDO; ?>">Lihat Detail</a>

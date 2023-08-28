@@ -37,6 +37,15 @@
 	<!-- table end -->
 	<?php } ?>
 
+	<?php if ($this->uri->segment(2) == 'daftar_permohonan' || $this->uri->segment(2) == 'daftar_progress' ) { ?>
+	<!-- table start -->
+	<script src="<?= base_url('public/')?>js/datatable/datatables/jquery.dataTables.min.js"></script>
+	<script src="<?= base_url('public/')?>js/datatable/datatables/datatable.custom.js"></script>
+	<script src="<?= base_url('public/')?>js/tooltip-init.js"></script>
+	<script src="<?= base_url('public/')?>js/chart-widget.js"></script>
+	<!-- table end -->
+	<?php } ?>
+
 	<!-- Theme js-->
 	<script src="<?= base_url('public/')?>js/script.js"></script>
 	<script src="<?= base_url('public/')?>js/theme-customizer/customizer.js"></script>

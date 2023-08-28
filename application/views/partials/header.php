@@ -45,7 +45,12 @@
 	<!-- table start -->
 	<?php if ($this->uri->segment(1) == 'daftar_permohonan' || $this->uri->segment(1) == 'daftar_progress'|| $this->uri->segment(1) == 'pesan'|| $this->uri->segment(1) == 'list_user') { ?>
 		<link rel="stylesheet" type="text/css" href="<?= base_url('public/')?>css/datatables.css">
+		<?php } ?>
+		<?php if ($this->uri->segment(2) == 'daftar_permohonan' || $this->uri->segment(2) == 'daftar_progress') { ?>
+			
+			<link rel="stylesheet" type="text/css" href="<?= base_url('public/')?>css/datatables.css">
 	<?php } ?>
+
 	<!-- table end -->
 </head>
 

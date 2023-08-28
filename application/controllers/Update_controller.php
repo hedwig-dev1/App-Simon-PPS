@@ -26,7 +26,7 @@ class Update_controller extends CI_Controller {
             'pageTitle' => 'Kirim Progress Pekerjaan Bulanan Untuk Data :<b>['.$load['id_pemohonPE'].']</b>',
             'pages' => 'pages/guest/progress_pekerjaan',
             'data' => $load,
-            'pemohon_idPR' => $id_pemohonPE
+            'id_pemohonPE' => $id_pemohonPE
         );    
 
         $this->load->view('main', $data);
@@ -43,7 +43,7 @@ class Update_controller extends CI_Controller {
         $this->_rules('progress');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->sendProgress();
+            $this->sendProgress($id_progPR);
         } else {
             $nama_file_foto = 'default' . '_' . date('Y-m-d');
     
@@ -56,9 +56,10 @@ class Update_controller extends CI_Controller {
                 'deviasiPR'     =>  $this->input->post('deviasi'),
                 'rl_keuanPR'    =>  $this->input->post('realisasi_keuangan'),
                 'lp_bulanPR'    =>  $this->input->post('laporan_bulanan'),
-                'waktuPR'       =>  $this->input->post('waktu')
+                'waktuPR'       =>  $this->input->post('waktu'),
+                'updateDatePR'  => date('Y-m-d')
             );
-        
+            
             // upload gambar / foto
             $config = array(
                 'allowed_types' => 'jpg|jpeg|png|gif',
@@ -121,11 +122,11 @@ class Update_controller extends CI_Controller {
         $nama_file = 'default';
         $ud_pprDO = $_FILES['ud_pprDO']['name'];
 
+        $option = 1;
         $data = array(
             'id_dokumenDO' =>  $id_dokumenDO,
             'ud_pprDO'     => $ud_pprDO,
-            'jns_dokDO'    => 'Ditindak lanjuti',
-            'ket_dokDO'    => $this->input->post('ket_pesan')
+            'jns_dokDO'    => 'Ditindak lanjuti'
         );
 
         $config = array(
@@ -146,7 +147,7 @@ class Update_controller extends CI_Controller {
             }
         }
 
-        $this->ins->insert_dokumen($data, $id_dokumenDO);
+        $this->ins->insert_dokumen($data, $id_dokumenDO, $option);
         $this->session->set_flashdata('success', '<strong>Permohonan telah ditindak lanjuti! </strong>');
         redirect('seksi-pps/daftar_permohonan');
         
@@ -185,13 +186,12 @@ class Update_controller extends CI_Controller {
         $nama_file = 'sample';
         $IN13DO = $_FILES['IN13DO']['name'];
         $IN2DO = $_FILES['IN2DO']['name'];
-
+        $option = 2;
         $data = array(
             'id_dokumenDO' =>  $id_dokumenDO,
             'IN13DO' => $IN13DO,
             'IN2DO' => $IN2DO,
-            'jns_dokDO' => 'Diterima',
-            'ket_dokDO' => $this->input->post('ket_pesan')
+            'jns_dokDO' => 'Diterima'
         );
 
         $config = array(
@@ -224,7 +224,7 @@ class Update_controller extends CI_Controller {
             }
         }
 
-        $this->ins->insert_dokumen($data, $id_dokumenDO);
+        $this->ins->insert_dokumen($data, $id_dokumenDO, $option);
         $this->session->set_flashdata('success', '<strong>Permohonan telah diterima! </strong>');
         redirect('seksi-pps/daftar_permohonan');
 
@@ -262,12 +262,12 @@ class Update_controller extends CI_Controller {
         $id_dokumenDO = $this->input->post('id_dokumenDO');
         $nama_file = 'cancel';
         $IN14DO = $_FILES['IN14DO']['name'];
+        $option = 3;
 
         $data = array(
             'id_dokumenDO' =>  $id_dokumenDO,
             'IN14DO' => $IN14DO,
-            'jns_dokDO' => 'Ditolak',
-            'ket_dokDO' => $this->input->post('ket_pesan')
+            'jns_dokDO' => 'Ditolak'
         );
 
         $config = array(
@@ -288,7 +288,7 @@ class Update_controller extends CI_Controller {
             }
         }
 
-        $this->ins->insert_dokumen($data, $id_dokumenDO);
+        $this->ins->insert_dokumen($data, $id_dokumenDO, $option);
         $this->session->set_flashdata('success', '<strong>Permohonan telah ditolak! </strong>');
         redirect('seksi-pps/daftar_permohonan');
 
@@ -316,17 +316,17 @@ class Update_controller extends CI_Controller {
     function _rules($validasi) {
         switch ($validasi) {
             case 'progress':
-                $this->form_validation->set_rules('rencana_progress', 'Rencana Progress', 'trim|required|min_length[3]|max_length[20]',array(
+                $this->form_validation->set_rules('rencana_progress', 'Rencana Progress', 'trim|required|min_length[2]|max_length[4]',array(
                     'required' => '%s wajib di isi !',
                     'min_length' => '%s terlalu pendek !',
                     'max_length' => '%s terlalu panjang !',
                 ));
-                $this->form_validation->set_rules('realisasi_progress', 'Realisasi Progress', 'trim|required|min_length[3]|max_length[20]',array(
+                $this->form_validation->set_rules('realisasi_progress', 'Realisasi Progress', 'trim|required|min_length[2]|max_length[4]',array(
                     'required' => '%s wajib di isi !',
                     'min_length' => '%s terlalu pendek !',
                     'max_length' => '%s terlalu panjang !',
                 ));
-                $this->form_validation->set_rules('deviasi', 'Deviasi', 'trim|required|min_length[3]|max_length[20]',array(
+                $this->form_validation->set_rules('deviasi', 'Deviasi', 'trim|required|min_length[2]|max_length[4]',array(
                     'required' => '%s wajib di isi !',
                     'min_length' => '%s terlalu pendek !',
                     'max_length' => '%s terlalu panjang !',

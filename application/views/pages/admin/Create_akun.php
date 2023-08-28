@@ -12,6 +12,7 @@
 			<div class="card">
 				<div class="card-body">
 					<form method="POST" action="<?= base_url($action); ?>" class="needs-validation">
+						<input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
 						<div class="row g-3">
 							<div class="col-md-6">
 								<label class="form-label text-dark" for="">Nama Satuan Kerja</label>

@@ -10,8 +10,18 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<div class="card">
+			<?php
+            if (validation_errors() || $this->session->flashdata()) {?>
+              <div class="card-body">
+                <?php
+                echo validation_errors('<div class="alert alert-danger dark alert-dismissible fade show" role="alert">',' <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
+
+                 ?>
+              </div>
+            <?php } ?>
 				<div class="card-body">
 					<form class="needs-validation" action="<?= base_url($action); ?>" method="POST" enctype="multipart/form-data">
+					<input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
 						<div class="row g-3">
 							<div class="col-md-4">
 								<label class="form-label f-w-700 txt-dark" for="">Nama Pekerjaan</label>
@@ -36,34 +46,39 @@
 								<div class="txt-danger"><?= form_error('nilai_kontrak'); ?></div>
 							</div>
 							<div class="col-md-4">
-								<label class="form-label f-w-700 txt-dark" for="">Jangka Waktu Pelaksanaan</label>
-								<input class="form-control" name="jangka_waktu_pelaksanaan" id="jangka_waktu_pelaksanaan" type="text" value="<?= set_value('jangka_waktu_pelaksanaan'); ?>">
-								<div class="txt-danger"><?= form_error('jangka_waktu_pelaksanaan'); ?></div>
+								<label class="form-label f-w-700 txt-dark" for="">Jangka Waktu Mulai</label>
+								<input class="form-control" name="jangka_waktu_start" id="jangka_waktu_start" type="date" value="<?= set_value('jangka_waktu_start'); ?>">
+								<div class="txt-danger"><?= form_error('jangka_waktu_start'); ?></div>
 							</div>
+							<div class="col-md-4 mb-4">
+								<label class="form-label f-w-700 txt-dark" for="">Jangka Waktu Berakhir</label>
+								<input class="form-control" name="jangka_waktu_end" id="jangka_waktu_end" type="date" value="<?= set_value('jangka_waktu_end'); ?>">
+								<div class="txt-danger"><?= form_error('jangka_waktu_end'); ?></div>
+							</div>
+						</div>
+						<div class="row g-3">
 							<div class="col-md-4">
 								<label class="form-label f-w-700 txt-dark" for="">Lokasi Pekerjaan</label>
 								<input class="form-control" name="lokasi_pekerjaan" id="lokasi_pekerjaan" type="text" value="<?= set_value('lokasi_pekerjaan'); ?>">
 								<div class="txt-danger"><?= form_error('lokasi_pekerjaan'); ?></div>
 							</div>
-						</div>
-						<div class="row g-3">
 							<div class="col-md-4">
 								<label class="form-label f-w-700 txt-dark" for="">Tahapan Yang Sedang Berjalan</label>
 								<input class="form-control" name="tahapan_berjalan" id="tahapan_berjalan" type="text" value="<?= set_value('tahapan_berjalan'); ?>">
 								<div class="txt-danger"><?= form_error('tahapan_berjalan'); ?></div>
 							</div>
-							<div class="col-md-4">
+							<div class="col-md-4 mb-4">
 								<label class="form-label f-w-700 txt-dark" for="">Timeline Tahapan Pelaksanaan Pekerjaan</label>
 								<input class="form-control" name="timtah_pelakPE" id="timtah_pelakPE" type="file">
 								<div class="txt-danger"><?= form_error('timtah_pelakPE'); ?></div>
 							</div>
-							<div class="col-md-4 mb-4">
+						</div>
+						<div class="row g-3">
+							<div class="col-md-4">
 								<label class="form-label f-w-700 txt-dark" for="">Surat Keputusan Proyek Strategis Daerah</label>
 								<input class="form-control" name="skp_straPE" id="skp_straPE" type="file">
 								<div class="txt-danger"><?= form_error('skp_straPE'); ?></div>
 							</div>
-						</div>
-						<div class="row g-3">
 							<div class="col-md-4">
 								<label class="form-label f-w-700 txt-dark" for="">Surat Permohonan</label>
 								<input class="form-control" name="s_permohonanPE" id="s_permohonanPE" type="file">

@@ -7,7 +7,7 @@ class Insert_controller extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Insert_model', 'ins');
-        $this->load->model('View_model', 'view');
+        $this->load->model('View_model', 'view');       
         
     }
 
@@ -58,21 +58,25 @@ class Insert_controller extends CI_Controller {
             $skp_straPE = $_FILES['skp_straPE']['name'];
             $nilaiPagu = str_replace('.','',$this->input->post('pagu_anggaran'));
             $nilaiKontrak = str_replace('.','',$this->input->post('nilai_kontrak'));
+            
             // tb pemohon
             $data = array(
                 'id_pemohonPE' => $id_pemohonPE,
                 'dokumen_idPE' => $dokumen_idPE,
+                'asal_satkerPE' => $this->session->userdata('nama_satker'),
                 'nama_pkjPE' => $this->input->post('nama_pekerjaan'),
                 'sumber_pbyPE' => $this->input->post('sumber_pembiayaan'),
                 'pagu_aggPE' => $nilaiPagu,
                 'nil_kontrakPE' => $nilaiKontrak,
-                'jw_pelaksanaanPE' => $this->input->post('jangka_waktu_pelaksanaan'),
+                'jw_StartpelaksanaanPE' => $this->input->post('jangka_waktu_start'),
+                'jw_EndpelaksanaanPE' => $this->input->post('jangka_waktu_end'),
                 'lokasi_pkjPE' => $this->input->post('lokasi_pekerjaan'),
                 't_berjalanPE' => $this->input->post('tahapan_berjalan'),
                 'pp_keberPE' =>  $this->input->post('potensi_pengaruh_keberhasilan'),
                 'skp_straPE' => $skp_straPE,
                 'timtah_pelakPE' => $timtah_pelakPE,
-                's_permohonanPE' => $s_permohonanPE
+                's_permohonanPE' => $s_permohonanPE,
+                'updateDatePE' => date('Y-m-d')
             );
             
             $data_two = array(
@@ -141,6 +145,7 @@ class Insert_controller extends CI_Controller {
      */
     function login() 
     {
+        
         $data = array(
             'title' => 'Login',
             'action' => 'auth/login'
@@ -209,9 +214,13 @@ class Insert_controller extends CI_Controller {
         $pass = $this->input->post('pass', TRUE);
         $csrf = $this->security->get_csrf_hash();
         
-        
         $validasi = $this->view->login($user, $pass);
-     
+        
+        // echo "<pre>";
+        // var_dump($validasi->num_rows());
+        // echo "</pre>";
+        // die();
+        
         if ($validasi != NULL && $validasi->num_rows() >= 0 && $validasi->num_rows() <= 2) {
             $data = $validasi->row_array();
             switch ($data['level']) {
@@ -228,7 +237,7 @@ class Insert_controller extends CI_Controller {
                     redirect('Main');
                     break;
 
-                case 'seksi-pss':
+                case 'seksi-pps':
                     $this->session->set_userdata(array(
                         'masuk' => TRUE,
                         'nama_satker' => $data['nama_satker'],
@@ -260,7 +269,7 @@ class Insert_controller extends CI_Controller {
                     break;
 
                 default:
-                    # code...
+                    
                     break;
             }
 
@@ -399,11 +408,11 @@ class Insert_controller extends CI_Controller {
                     'min_length' => '%s terlalu pendek !',
                     'max_length' => '%s terlalu panjang !',
                 ));
-                $this->form_validation->set_rules('jangka_waktu_pelaksanaan', 'Jangka Waktu Pelaksanaan', 'trim|required|min_length[5]|max_length[50]',array(
-                    'required' => '%s wajib di isi !',
-                    'min_length' => '%s terlalu pendek !',
-                    'max_length' => '%s terlalu panjang !',
+                $this->form_validation->set_rules('jangka_waktu_start', 'Jangka Waktu Mulai', 'trim|required', array(
+                    'required' => '%s wajib di isi !'
                 ));
+                $this->form_validation->set_rules('jangka_waktu_end', 'Jangka Waktu Berakhir', 'trim|required', array(
+                    'required' => '%s wajib di isi !'));
                 $this->form_validation->set_rules('lokasi_pekerjaan', 'Lokasi Pekerjaan', 'trim|required|min_length[5]|max_length[50]',array(
                     'required' => '%s wajib di isi !',
                     'min_length' => '%s terlalu pendek !',
@@ -418,14 +427,16 @@ class Insert_controller extends CI_Controller {
                     'required' => '%s wajib di isi !',
                     'min_length' => '%s terlalu pendek !',
                     'max_length' => '%s terlalu panjang !',
-                ));
-                
+                ));        
+
                 break;            
             default:
                 # code...
                 break;
         }
-        
     }
+
+    
+
 }
 

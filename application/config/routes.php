@@ -17,6 +17,8 @@ $route['seksi-pps/daftar_permohonan'] = 'View_controller/seksiPps_view';
 $route['seksi-pps/daftar_progress'] = 'View_controller/daftarProgress_Pps';
 $route['progress/kirim_pemberitahuan'] = 'Insert_controller/approveProg';
 $route['permohonan/tindak_lanjuti/(:any)'] = 'Update_controller/tindakPermohonan/$1';
+$route['permohonan/terima/(:any)'] = 'Update_controller/approvePermohonan/$1';
+$route['permohonan/tolak/(:any)'] = 'Update_controller/cancelPermohonan/$1';
 $route['permohonan/pro/tindak_lanjuti/(:any)'] = 'Update_controller/processTindak/$1';
 $route['permohonan/pro/approve/(:any)'] = 'Update_controller/processApprove/$1';
 $route['permohonan/pro/cancel/(:any)'] = 'Update_controller/processCancel/$1';
@@ -24,20 +26,6 @@ $route['permohonan/pro/cancel/(:any)'] = 'Update_controller/processCancel/$1';
 
 
 $route['download/(:any)'] = 'Update_controller/download_berkas/$1';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // auth
 $route['login'] = 'Insert_controller/login';

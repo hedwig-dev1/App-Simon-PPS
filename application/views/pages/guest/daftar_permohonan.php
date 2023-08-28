@@ -13,6 +13,7 @@
 		<div class="col-sm-12">
 			<div class="card">
 				<div class="card-header">
+				<?php $this->load->view('partials/alerts');?>
 					<div class="row justify-content-between">
 						<h5>Data Permohonan</h5>
 					</div>
@@ -75,6 +76,10 @@
 						<table class="display table table-bordered" id="basic-2">
 							<tbody>
 								<tr>
+									<td class="f-w-700 txt-dark" style="width:50%">Asal Satuan Kerja</td>
+									<td class="f-w-600 txt-dark">: <?= $d->asal_satkerPE; ?></td>
+								</tr>
+								<tr>
 									<td class="f-w-700 txt-dark" style="width:50%">Nama Pekerjaan</td>
 									<td class="f-w-600 txt-dark">: <?= $d->nama_pkjPE; ?></td>
 								</tr>
@@ -91,8 +96,12 @@
 									<td class="f-w-600 txt-dark">: <?= $d->nil_kontrakPE; ?></td>
 								</tr>
 								<tr>
-									<td class="f-w-700 txt-dark" style="width:50%">Jangka Waktu Pelaksanaan</td>
-									<td class="f-w-600 txt-dark" >: <?= $d->jw_pelaksanaanPE; ?></td>
+									<td class="f-w-700 txt-dark" style="width:50%">Jangka Waktu Dimulai</td>
+									<td class="f-w-600 txt-dark" >: <?= $d->jw_StartpelaksanaanPE; ?></td>
+								</tr>
+								<tr>
+									<td class="f-w-700 txt-dark" style="width:50%">Jangka Waktu Berakhir</td>
+									<td class="f-w-600 txt-dark" >: <?= $d->jw_EndpelaksanaanPE; ?></td>
 								</tr>
 								<tr>
 									<td class="f-w-700 txt-dark" style="width:50%">Lokasi Pekerjaan</td>

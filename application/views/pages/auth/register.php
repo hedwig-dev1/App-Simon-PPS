@@ -52,6 +52,7 @@
             <div class="login-card">
               <small class="txt-danger"><?= validation_errors(); ?></small>
               <form class="theme-form login-form" method="POST" action="<?= base_url($action) ?>" >
+              <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
                 <h4>Buat Akunmu</h4>
                 <h6>Masukkan detail pribadi Anda untuk membuat akun</h6>
                 <div class="form-group">

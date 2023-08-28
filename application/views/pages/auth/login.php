@@ -58,14 +58,14 @@
                 <div class="form-group">
                   <label>Username</label>
                   <div class="input-group"><span class="input-group-text"><i class="icon-user"></i></span>
-                    <input class="form-control text-dark" type="text" id="user" name="user">
+                    <input class="form-control text-dark" type="text" id="user" name="user" value="<?= set_value('user'); ?>">
                   </div>
                   <div class="txt-danger"><?= form_error('user'); ?></div>
                 </div>
                 <div class="form-group">
                   <label>Password</label>
                   <div class="input-group"><span class="input-group-text"><i class="icon-lock"></i></span>
-                  <input class="form-control text-dark" type="password" id="pass" name="pass">
+                  <input class="form-control text-dark" type="password" id="pass" name="pass" value="<?= set_value('pass'); ?>">
                   <div class="show-hide"><span class="show"></span></div>
                 </div>
                 <div class="txt-danger"><?= form_error('pass'); ?></div>
