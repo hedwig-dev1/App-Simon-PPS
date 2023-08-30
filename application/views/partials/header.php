@@ -57,11 +57,11 @@
 <body>
 
 	<!-- Loader starts-->
-	<div class="loader-wrapper">
+	<!-- <div class="loader-wrapper">
 		<div class="theme-loader">
 			<div class="loader-p"></div>
 		</div>
-	</div>
+	</div> -->
 	<!-- Loader ends-->
 	<!-- page-wrapper Start       -->
 	<div class="page-wrapper compact-wrapper" id="pageWrapper">

@@ -231,6 +231,7 @@ class Insert_controller extends CI_Controller {
                         'user' => $data['user'],
                         'pass' => $data['pass'],
                         'level' => 'admin',
+                        'mail'  => $data['usermail'],
                         'id_level' => '1',
                         'csrf'  => $csrf
                     ));
@@ -244,6 +245,7 @@ class Insert_controller extends CI_Controller {
                         'user' => $data['user'],
                         'pass' => $data['pass'],
                         'level' => 'seksi-pps',
+                        'mail'  => $data['usermail'],
                         'id_level' => '2',
                         'csrf'  => $csrf
                     ));
@@ -258,6 +260,7 @@ class Insert_controller extends CI_Controller {
                             'user' => $data['user'],
                             'pass' => $data['pass'],
                             'level' => 'guest',
+                            'mail'  => $data['usermail'],
                             'id_level' => '3',
                             'csrf'  => $csrf
                         ));

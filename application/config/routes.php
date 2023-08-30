@@ -44,5 +44,11 @@ $route['delete/(:any)'] = 'Update_controller/delete/$1';
 // 404
 $route['404'] = 'Main/error';
 
+
+//Zia Routes
+$route['guest/form_permohonan'] = 'Guest/Insert_controller/form_permohonan';
+$route['guest/form_permohonan/send'] = 'Guest/Insert_controller/permohonan_process';
+
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

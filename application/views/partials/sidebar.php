@@ -31,7 +31,7 @@
 
 										<?php if ($this->session->userdata('id_level') == 3) { ?>
 											<li><a href="<?= base_url('daftar_permohonan')?>">Daftar Permohonan</a></li>
-											<li><a href="<?= base_url('permohonan/add_document')?>">Kirim Permohonan</a></li>
+											<li><a href="<?= base_url('guest/form_permohonan')?>">Kirim Permohonan</a></li>
 										<?php } ?>
 
 									</ul>
